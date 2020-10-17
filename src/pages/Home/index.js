@@ -5,6 +5,7 @@ import Dependencies from '../../config/dependencies';
 import useApi from '../../hooks/useApi';
 import { getProducts } from '../../models/Product';
 import useService from '../../hooks/useService';
+import { setProducts } from '../../redux/actions/products';
 
 import './index.css';
 
@@ -15,9 +16,7 @@ const HomePage = ({ dependencies = Dependencies }) => {
 
   useEffect(() => {
     getProducts(PriceAPI, {
-      onSuccess: (products) => {
-        console.log(products);
-      },
+      onSuccess: (products) => dispatch(setProducts(products)),
       onError: () => Alert.error('Erro na requisição!'),
     });
   }, [Alert, PriceAPI, dispatch]);
