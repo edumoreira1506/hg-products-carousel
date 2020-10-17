@@ -19,7 +19,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --setupFilesAfterEnv ./src/tests/setup.js",
+    "test": "react-scripts test --setupFilesAfterEnv ./src/tests/support/setup.js",
     "eject": "react-scripts eject",
     "lint": "eslint src"
   },
