@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import logo from '../../static/images/logo.svg';
 import Dependencies from '../../config/dependencies';
 import useApi from '../../hooks/useApi';
 import { getProducts } from '../../models/Product';
 import useService from '../../hooks/useService';
 import { setProducts } from '../../redux/actions/products';
+import withRedux from '../../wrappers/withRedux';
 
 import './index.css';
 
@@ -13,13 +15,14 @@ const HomePage = ({ dependencies = Dependencies }) => {
   const dispatch = useDispatch();
   const PriceAPI = useApi(dependencies, 'Price');
   const Alert = useService(dependencies, 'Alert');
+  const { t } = useTranslation('common');
 
   useEffect(() => {
     getProducts(PriceAPI, {
       onSuccess: (products) => dispatch(setProducts(products)),
-      onError: () => Alert.error('Erro na requisição!'),
+      onError: () => Alert.error(t('somethingWrong')),
     });
-  }, [Alert, PriceAPI, dispatch]);
+  }, [Alert, PriceAPI, dispatch, t]);
 
   return (
     <div className="App">
@@ -43,4 +46,4 @@ const HomePage = ({ dependencies = Dependencies }) => {
   );
 };
 
-export default HomePage;
+export default withRedux(HomePage);

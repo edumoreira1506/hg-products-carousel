@@ -1,4 +1,4 @@
 import HomePage from './pages/Home';
-import withRedux from './wrappers/withRedux';
+import withI18Next from './wrappers/withI18Next';
 
-export default withRedux(HomePage);
+export default withI18Next(HomePage);
