@@ -16,7 +16,7 @@
     align-items: center;
     justify-content: flex-start;
 
-    @media (min-width: $ipad-width) {
+    @media (min-width: $tablet-width) {
       width: 95%;
     }
   }

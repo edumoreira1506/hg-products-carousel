@@ -8,6 +8,7 @@ import useService from '../../hooks/useService';
 import { setProducts } from '../../redux/actions/products';
 import withRedux from '../../wrappers/withRedux';
 import Header from '../../components/Header';
+import Banner from '../../components/Banner';
 
 import './index.scss';
 
@@ -25,8 +26,9 @@ const HomePage = ({ dependencies = Dependencies }) => {
   }, [Alert, PriceAPI, dispatch, t]);
 
   return (
-    <div>
+    <div className="HomePage">
       <Header />
+      <Banner />
     </div>
   );
 };
