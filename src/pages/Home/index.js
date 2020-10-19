@@ -11,6 +11,7 @@ import Header from '../../components/Header';
 import Banner from '../../components/Banner';
 import Switcher from '../../components/Switcher';
 import { planOptions } from '../../config/constants';
+import { setDisplay } from '../../redux/actions/config';
 
 import './index.scss';
 
@@ -27,7 +28,9 @@ const HomePage = ({ dependencies = Dependencies }) => {
     });
   }, [Alert, PriceAPI, dispatch, t]);
 
-  const handleChangeDisplay = console.log;
+  const handleChangeDisplay = (display) => {
+    dispatch(setDisplay(display));
+  };
 
   const options = [
     {
