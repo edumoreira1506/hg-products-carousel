@@ -13,4 +13,10 @@ export default {
       3: 'Painel de Controle cPanel',
     },
   },
+  switcher: {
+    title: 'Quero pagar a cada:',
+    triennially: '3 anos',
+    annually: '1 ano',
+    monthly: '1 mês',
+  },
 };
