@@ -5,27 +5,31 @@ import Carousel from 'react-slick';
 import ComputerIlustration1 from '../../static/images/ilustrations/computer-1.svg';
 import ComputerIlustration2 from '../../static/images/ilustrations/computer-2.svg';
 import ComputerIlustration3 from '../../static/images/ilustrations/computer-3.svg';
+import RightArrow from '../../static/images/icons/right.svg';
+import LeftArrow from '../../static/images/icons/left.svg';
 import InfoIcon from '../../static/images/icons/info.svg';
 
 import './index.scss';
 import { CAROUSEL_PRODUCTS_KEY } from '../../config/constants';
 
 const CAROUSEL_SETTINGS = {
+  nextArrow: <img src={RightArrow} alt="right" />,
+  prevArrow: <img src={LeftArrow} alt="left" />,
   slidesToScroll: 1,
   slidesToShow: 3,
   infinite: false,
-  arrows: false,
+  arrows: true,
   responsive: [
     {
       breakpoint: 1024,
       settings: {
-        slidesToShow: 2.1,
+        slidesToShow: 2,
       },
     },
     {
       breakpoint: 450,
       settings: {
-        slidesToShow: 1.1,
+        slidesToShow: 1,
       },
     },
   ],
