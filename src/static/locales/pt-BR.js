@@ -52,4 +52,7 @@ export default {
       ssl: 'Cerificado SSL',
     },
   },
+  promotion: {
+    warning: '*Confira as condições da promoção',
+  },
 };

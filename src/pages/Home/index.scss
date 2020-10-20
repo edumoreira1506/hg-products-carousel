@@ -32,4 +32,19 @@
     font-size: 1.4em;
     z-index: 99;
   }
+
+  &__promotion {
+    color: $cyan-blue;
+    opacity: 0.7;
+    text-align: center;
+    width: 100%;
+    display: block;
+    padding-bottom: 30px;
+    margin: 0 auto;
+    max-width: $max-container-width;
+
+    @media (min-width: 769px) {
+      text-align: right;
+    }
+  }
 }

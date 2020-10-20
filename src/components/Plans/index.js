@@ -23,7 +23,7 @@ const CAROUSEL_SETTINGS = {
       },
     },
     {
-      breakpoint: 400,
+      breakpoint: 450,
       settings: {
         slidesToShow: 1.1,
       },

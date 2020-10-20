@@ -20,7 +20,7 @@ const HomePage = ({ dependencies = Dependencies }) => {
   const dispatch = useDispatch();
   const PriceAPI = useApi(dependencies, 'Price');
   const Alert = useService(dependencies, 'Alert');
-  const { t } = useTranslation(['common', 'switcher']);
+  const { t } = useTranslation(['common', 'switcher', 'promotion']);
   const { products, config: { display, query } } = useSelector((state) => state);
 
   useEffect(() => {
@@ -77,6 +77,8 @@ const HomePage = ({ dependencies = Dependencies }) => {
         </div>
       </div>
       <Plans onClick={handleClickProduct} products={products} display={display} />
+      {/* eslint-disable-next-line */}
+      <a className="HomePage__promotion" href="#">{t('promotion:warning')}</a>
     </div>
   );
 };
