@@ -1,0 +1,212 @@
+@import "../../variables.scss";
+
+.Plans {
+  background-color: $alice-blue;
+  max-width: $max-container-width;
+  margin: 0 auto;
+  padding-bottom: 20px;
+  position: relative;
+
+  .slick-track {
+    display: flex;
+  }
+
+  .slick-slide > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slick-prev, .slick-next {
+    position: absolute;
+    transform: translateY(-50%);
+    z-index: 5;
+    top: 50%;
+  }
+
+  .slick-prev {
+    left: 10px;
+  }
+
+  .slick-next {
+    right: 10px;
+  }
+
+  &__product {
+    position: relative;
+    width: 90% !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $white;
+    border-radius: 4px;
+    border: solid 1px $solitude;
+
+    &:hover {
+      &::before {
+        background-color: $pumpkin;
+        content: "";
+        border-radius: 4px;
+        position: absolute;
+        width: 100%;
+        z-index: -1;
+        top: -25px;
+        height: 105%;
+      }
+
+      .Plans__product-buy-now {
+        background-color: $pumpkin;
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &-header {
+      padding: 30px 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      border-bottom: solid 1px $solitude;
+    }
+
+    &-name {
+      color: $dark-blue;
+      margin: 18px 0 0 0;
+      font-weight: 700;
+      font-size: 1.7em;
+    }
+
+    &-body {
+      margin-top: 25px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &-prices {
+      display: flex;
+      width: 65%;
+      align-items: center;
+      max-width: 165px;
+      justify-content: space-between;
+    }
+
+    &-price {
+      font-weight: 600;
+      margin: 0;
+
+      &--risked {
+        font-weight: 300;
+        text-decoration: line-through;
+      }
+
+      &-per-month {
+        color: $dark-blue;
+        margin: 0 0 20px 0;
+
+        &--big {
+          font-size: 2em;
+          font-weight: 700;
+        }
+      }
+    }
+
+    &-buy-now {
+      width: 90%;
+      background-color: $cyan-blue;
+      border: none;
+      color: $white;
+      font-size: 1.7em;
+      font-weight: 800;
+      border-radius: 26px;
+      padding: 8px 0;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &-equals-to {
+      margin: 6px 0;
+    }
+
+    &-free-domain {
+      margin: 25px 0 0 0;
+      font-weight: 600;
+      display: flex;
+    }
+
+    &-info-icon {
+      margin-left: 8px;
+    }
+
+    &-cta {
+      margin-bottom: 25px;
+      display: flex;
+      max-width: 285px;
+      width: 95%;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &-sale {
+      color: $dark-blue;
+    }
+
+    &-off-tag {
+      background-color: $rouge;
+      padding: 5px 8px;
+      border-radius: 26px;
+      color: $white;
+      text-align: center;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    &-footer {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: left;
+      border-top: solid 1px $solitude;
+      padding: 40px 0 30px 0;
+
+      &-text {
+        width: 90%;
+        margin: 0 0 10px 0;
+
+        &--outline {
+          text-underline-position: under;
+          text-decoration-color: $black;
+          text-decoration: underline;
+        }
+
+        &--dotted {
+          text-decoration: underline;
+          text-decoration-style: dotted;
+          text-underline-position: under;
+          text-decoration-color: $pigeon-post;
+        }
+
+        &--margin-left {
+          margin-left: 6px;
+        }
+
+        &--margin-right {
+          margin-right: 6px;
+        }
+      }
+    }
+  }
+}

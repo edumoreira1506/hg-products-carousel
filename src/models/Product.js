@@ -5,7 +5,8 @@ const getCarouselProducts = (pricesObject) => CAROUSEL_PRODUCTS_KEY.map(
   (carouselProductKey) => pricesObject[carouselProductKey],
 );
 
-const formatProducts = (carouselProductsRaw) => carouselProductsRaw.map(productFormatter);
+const formatProducts = (carouselProductsRaw) => carouselProductsRaw
+  .map((product, index) => productFormatter(product, CAROUSEL_PRODUCTS_KEY[index]));
 
 export const getProducts = async (priceAPI, callback) => {
   const pricesResponse = await priceAPI.all();

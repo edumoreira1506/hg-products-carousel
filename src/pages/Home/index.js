@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import Dependencies from '../../config/dependencies';
 import useApi from '../../hooks/useApi';
@@ -10,8 +10,9 @@ import withRedux from '../../wrappers/withRedux';
 import Header from '../../components/Header';
 import Banner from '../../components/Banner';
 import Switcher from '../../components/Switcher';
+import Plans from '../../components/Plans';
 import { planOptions } from '../../config/constants';
-import { setDisplay } from '../../redux/actions/config';
+import { setDisplay, setQuery } from '../../redux/actions/config';
 
 import './index.scss';
 
@@ -19,17 +20,35 @@ const HomePage = ({ dependencies = Dependencies }) => {
   const dispatch = useDispatch();
   const PriceAPI = useApi(dependencies, 'Price');
   const Alert = useService(dependencies, 'Alert');
-  const { t } = useTranslation(['common', 'switcher']);
+  const { t } = useTranslation(['common', 'switcher', 'promotion']);
+  const { products, config: { display, query } } = useSelector((state) => state);
 
   useEffect(() => {
     getProducts(PriceAPI, {
-      onSuccess: (products) => dispatch(setProducts(products)),
+      onSuccess: (newProducts) => dispatch(setProducts(newProducts)),
       onError: () => Alert.error(t('common:somethingWrong')),
     });
   }, [Alert, PriceAPI, dispatch, t]);
 
-  const handleChangeDisplay = (display) => {
-    dispatch(setDisplay(display));
+  useEffect(() => {
+    if (query) {
+      const queriesString = Object.entries(query).map(([key, value]) => `${key}=${value}`).join('&');
+
+      window.location.search = queriesString;
+    }
+  }, [query]);
+
+  const handleChangeDisplay = (newDisplay) => {
+    dispatch(setDisplay(newDisplay));
+  };
+
+  const handleClickProduct = ({ id }) => {
+    dispatch(setQuery({
+      a: 'add',
+      pid: id,
+      billingcycle: display,
+      promocode: 'PROMOHG40',
+    }));
   };
 
   const options = [
@@ -53,8 +72,13 @@ const HomePage = ({ dependencies = Dependencies }) => {
       <Banner />
       <div className="HomePage__switcher">
         <p className="HomePage__text">{t('switcher:title')}</p>
-        <Switcher onChange={handleChangeDisplay} options={options} />
+        <div className="HomePage__switcher-container">
+          <Switcher onChange={handleChangeDisplay} options={options} />
+        </div>
       </div>
+      <Plans onClick={handleClickProduct} products={products} display={display} />
+      {/* eslint-disable-next-line */}
+      <a className="HomePage__promotion" href="#">{t('promotion:warning')}</a>
     </div>
   );
 };

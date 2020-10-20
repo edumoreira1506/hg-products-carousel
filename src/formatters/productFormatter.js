@@ -7,12 +7,13 @@ const calcDiscountedPrice = (price) => price - calcDiscount(price);
 
 const calcPricePerMonth = (price, months) => price / months;
 
-const productFormatter = ({ name, id, cycle: { triennially, annually, monthly } }) => {
+const productFormatter = ({ name, id, cycle: { triennially, annually, monthly } }, key) => {
   const monthlyPrice = Number(monthly.priceOrder);
   const annuallyPrice = Number(annually.priceOrder);
   const trienniallyPrice = Number(triennially.priceOrder);
 
   return {
+    key,
     id,
     name,
     plans: {

@@ -1,5 +1,8 @@
 This project was started with [Create React App](https://github.com/facebook/create-react-app).
 
+## Environments
+[Staging](https://eduardo-moreira-hostgator.herokuapp.com/).
+
 ## Dependencies
 
 ```
