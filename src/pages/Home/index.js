@@ -12,7 +12,7 @@ import Banner from '../../components/Banner';
 import Switcher from '../../components/Switcher';
 import Plans from '../../components/Plans';
 import { planOptions } from '../../config/constants';
-import { setDisplay } from '../../redux/actions/config';
+import { setDisplay, setQuery } from '../../redux/actions/config';
 
 import './index.scss';
 
@@ -21,7 +21,7 @@ const HomePage = ({ dependencies = Dependencies }) => {
   const PriceAPI = useApi(dependencies, 'Price');
   const Alert = useService(dependencies, 'Alert');
   const { t } = useTranslation(['common', 'switcher']);
-  const { products, config: { display } } = useSelector((state) => state);
+  const { products, config: { display, query } } = useSelector((state) => state);
 
   useEffect(() => {
     getProducts(PriceAPI, {
@@ -30,8 +30,25 @@ const HomePage = ({ dependencies = Dependencies }) => {
     });
   }, [Alert, PriceAPI, dispatch, t]);
 
+  useEffect(() => {
+    if (query) {
+      const queriesString = Object.entries(query).map(([key, value]) => `${key}=${value}`).join('&');
+
+      window.location.search = queriesString;
+    }
+  }, [query]);
+
   const handleChangeDisplay = (newDisplay) => {
     dispatch(setDisplay(newDisplay));
+  };
+
+  const handleClickProduct = ({ id }) => {
+    dispatch(setQuery({
+      a: 'add',
+      pid: id,
+      billingcycle: display,
+      promocode: 'PROMOHG40',
+    }));
   };
 
   const options = [
@@ -59,7 +76,7 @@ const HomePage = ({ dependencies = Dependencies }) => {
           <Switcher onChange={handleChangeDisplay} options={options} />
         </div>
       </div>
-      <Plans products={products} display={display} />
+      <Plans onClick={handleClickProduct} products={products} display={display} />
     </div>
   );
 };

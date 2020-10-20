@@ -31,7 +31,7 @@ const CAROUSEL_SETTINGS = {
   ],
 };
 
-const Plans = ({ display, products }) => {
+const Plans = ({ display, products, onClick }) => {
   const { t } = useTranslation(['plans', 'common']);
 
   const getInfo = ({ key }) => {
@@ -78,7 +78,7 @@ const Plans = ({ display, products }) => {
                   {t('plans:month')}
                   *
                 </p>
-                <button className="Plans__product-buy-now">{t('plans:buyNow')}</button>
+                <button onClick={() => onClick(product)} className="Plans__product-buy-now">{t('plans:buyNow')}</button>
                 <p className="Plans__product-free-domain">
                   {t('plans:freeDomain')}
                   <img src={InfoIcon} alt="info" className="Plans__product-info-icon" />
@@ -135,6 +135,7 @@ Plans.propTypes = {
     },
   })).isRequired,
   display: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Plans;
