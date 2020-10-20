@@ -14,6 +14,10 @@
     margin: 0 auto;
     background-color: $alice-blue;
 
+    @media (min-width: $tablet-width) {
+      padding: 0 0 70px 0;
+    }
+
     &-container {
       max-width: 325px;
       width: 90%;

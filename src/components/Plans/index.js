@@ -8,16 +8,16 @@ import ComputerIlustration3 from '../../static/images/ilustrations/computer-3.sv
 import RightArrow from '../../static/images/icons/right.svg';
 import LeftArrow from '../../static/images/icons/left.svg';
 import InfoIcon from '../../static/images/icons/info.svg';
+import { CAROUSEL_PRODUCTS_KEY } from '../../config/constants';
 
 import './index.scss';
-import { CAROUSEL_PRODUCTS_KEY } from '../../config/constants';
 
 const CAROUSEL_SETTINGS = {
   nextArrow: <img src={RightArrow} alt="right" />,
   prevArrow: <img src={LeftArrow} alt="left" />,
   slidesToScroll: 1,
   slidesToShow: 3,
-  infinite: false,
+  infinite: true,
   arrows: true,
   responsive: [
     {
